@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\User;
 
 class CategoryController extends Controller
 {
@@ -12,16 +13,19 @@ class CategoryController extends Controller
         return view('category.index' , compact('categories'));
     }
     public function create(){
-        return view('category.create');
+        $users = User::where('role_id',3)->get();
+        return view('category.create' , compact('users'));
     }
     public function store(Request $request){
 
         $request->validate([
             'name' => 'required|max:191|unique:categories,name',
+            'blog' => 'required|max:191|unique:categories,blog',
             'status' => 'required',
         ]);
         $store = Category::create([
             'name' => $request->name,
+            'blog' => $request->blog,
             'status' => $request->status,
         ]);
 
@@ -34,17 +38,20 @@ class CategoryController extends Controller
 
     }
     public function edit($id){
+        $users = User::where('role_id',3)->get();
         $category = Category::where('id',$id)->first();
-        return view('category.edit',compact('category'));
+        return view('category.edit',compact('category' , 'users'));
     }
 
     public function update(Request $request, $id){
         $request->validate([ 
         'name' => 'required|max:191|unique:categories,name,'.$id,
+        'blog' => 'required|max:191|unique:categories,blog,'.$id,
         'status' => 'required',
     ]);
     $update = Category::where('id',$id)->update([
         'name' => $request->name,
+        'blog' => $request->blog,
         'status' => $request->status,
     ]);
     if($update > 0){

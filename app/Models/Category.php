@@ -9,4 +9,7 @@ class Category extends Model
 {
     use HasFactory;
     protected $guarded=[];
+    public function reader(){
+        return $this->belongsTo(User::class);
+    }
 }

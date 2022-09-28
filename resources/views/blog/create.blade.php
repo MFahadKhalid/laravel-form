@@ -30,6 +30,16 @@
                             <small class="text-danger">@error ('category_id') {{ $message }} @enderror</small>
                         </div>
                         <div class="col-md-12 mt-3">
+                            <label for="blog">Blog</label>
+                            <select name="blog" class="form-control">
+                                <option value="">Please Select</option>
+                                @foreach($categories as $category)
+                                    <option value="{{$category->id}}">{{$category->blog}}</option>
+                                @endforeach
+                            </select>
+                            <small class="text-danger">@error ('blog') {{ $message }} @enderror</small>
+                        </div>
+                        <div class="col-md-12 mt-3">
                             <label for="content">Content</label>
                             <textarea name="content" cols="30" rows="10" class="form-control"></textarea>
                             <small class="text-danger">@error ('content') {{ $message }} @enderror</small>                            
