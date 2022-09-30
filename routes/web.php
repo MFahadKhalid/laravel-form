@@ -42,5 +42,9 @@ Route::get('author' , [AuthorController::class , 'index'])->name('authors.index'
 
 //Blog
 
-Route::get('create', [BlogController::class , 'create'])->name('blog.create');
-Route::post('store', [BlogController::class , 'store'])->name('blog.store');
+Route::get('blog' , [BlogController::class , 'index'])->name('blog.index');
+Route::get('blog/create' , [BlogController::class , 'create'])->name('blog.create');
+Route::post('blog/store' , [BlogController::class , 'store'])->name('blog.store');
+Route::get('blog/{id}/edit', [BlogController::class, 'edit'])->name('blog.edit');
+Route::post('blog/{id}/update', [BlogController::class, 'update'])->name('blog.update');
+Route::get('blog/{id}/delete', [BlogController::class, 'delete'])->name('blog.delete');

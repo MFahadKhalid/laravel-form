@@ -9,8 +9,7 @@ class Blog extends Model
 {
     use HasFactory;
     protected $guarded = [];
-
     public function category(){
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Blog::class);
     }
 }

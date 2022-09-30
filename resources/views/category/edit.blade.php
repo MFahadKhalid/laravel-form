@@ -24,20 +24,10 @@
                 @csrf
                 <div class="row">
                 <div class="col-md-12 mt-3">
-                            <label for="author">Author</label>
-                            <select name="name" class="form-control"  value="{{old('name')}}">
-                                <option value="">Please Select</option>
-                                @foreach($users as $user)
-                                    <option value="{{$user->name}}" @if($user->name == $category->name) selected @endif >{{$user->name}}</option>
-                                @endforeach
-                            </select>
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" name="name" value="{{old('name' , $category->name)}}">
                             <small class="text-danger">@error ('name') {{ $message }} @enderror</small>
                         </div>
-                    <div class="mt-3 col-md-12">
-                        <label>Blog</label>
-                        <input type="text" name="blog" class="form-control"  value="{{old('blog' ,$category->blog)}}">
-                        <small class="text-danger">@error('blog')  {{$message}} @enderror</small>
-                    </div>
                     <div class="mt-3 col-md-12">
                         <label>Status</label>
                         <select name="status"  class="form-control"  value="">

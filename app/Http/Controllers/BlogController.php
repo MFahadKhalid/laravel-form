@@ -3,43 +3,86 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Category;
 use App\Models\Blog;
+use App\Models\Category;
 
 class BlogController extends Controller
 {
-    public function create(){
+    public function index(){
+        $blogs = Blog::get();
         $categories = Category::get();
-        return view('blog.create', compact('categories'));
+        return view('blog.index' , compact('blogs','categories'));
+    }
+    public function create(){
+        $blogs = Blog::get();
+        $categories = Category::get();
+        return view('blog.create' , compact('categories','blogs'));
     }
     public function store(Request $request){
-        // $request->validate([
-        //     'title' => 'required',
-        //     'blog' => 'required',
-        //     'category_id' => 'required',
-        //     'author_id' => 'required',
-        //     'content' => 'required',
-        //     'image' => 'required',
-        //     'status' => 'required',
-        // ]);
+        $request->validate([
+            'category' => 'required',
+            'title' => 'required|max:191:blogs,title',                
+            'image' => 'required',
+            'short_discription' => 'required|max:8000:blogs,short_discription'                
+        ]);
         if($request->file('image')){
             $image = $request->file('image');
-            $imageName = 'blog.image' . '-' . time() . '.' . $image->getClientOriginalExtension();
-            $image->move('upload/image/blog', $imageName);
+            $imageName = 'blog' . '-' . time() . '.' . $image->getClientOriginalExtension();
+            $image->move('upload/blog/', $imageName);
         }
         $store = Blog::create([
+            'category' => $request->category,
             'title' => $request->title,
-            'blog' => $request->blog,
-            'category_id' => $request->category_id,
-            'author_id' => auth()->user()->id,
-            'content' => $request->content,
+            'author' => auth()->user()->name,
+            'short_discription' => $request->short_discription,
             'image' => $imageName,
-            'status' => 1,
         ]);
-
         if(!empty($store->id)){
-            return redirect()->route('blog.create')->with('success','Blog Created');
+            return redirect()->route('blog.index')->with('Success' , 'Blog Add');
         }
-        return redirect()->back()->with('error','Something Went Wrong');
-    }    
+        else{
+            return redirect()->route('blog.create')->with('Error' , 'something went wrong');
+        }
+    }
+    public function edit($id){
+        $blog = Blog::where('id',$id)->first();
+        $categories = Category::get();
+        return view('blog.edit',compact('blog','categories'));
+    }
+    public function update(Request $request, $id){
+        $request->validate([ 
+        'category' => 'required,' .$id,
+        'title' => 'required|max:191:blogs,title,'.$id,
+        'image' => 'required,'.$id,
+        'short_discription' => 'required|max:191:blogs,short_discription,'.$id,
+    ]);
+    $imageData = image::where('id',$id)->first();
+    if($request->file('blog')){
+        $image = $request->file('blog');
+        $imageName = 'blog' . '-' . time() . '.' . $image->getClientOriginalExtension();
+        $image->move('upload/blog/', $imageName);
+    }
+    else{
+        $imageName = $imageData->blog;
+    }
+    $update = blog::where('id',$id)->update([
+        'category' => $request->category,
+        'title' => $request->title,
+        'author' => auth()->user()->id,
+        'short_discription' => $request->short_discription,
+        'image' => $imageName,
+    ]);
+    if($update > 0){
+        return redirect()->route('blog.index')->with('success','Blog update');
+    }
+    return redirect()->route('blog.index')->with('error','something went wrong');  
+    }
+    public function delete($id){
+        $blogs = Blog::where('id',$id)->first();
+        if(!empty($blogs)){
+         $blogs->delete();
+         return redirect()->route('blog.index')->with('success','Blog delete');
+        }
+        return redirect()->route('blog.index')->with('error','record not found');
+     }
 }

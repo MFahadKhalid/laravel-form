@@ -11,7 +11,7 @@
             @csrf
                     <div class="mt-5 card">
                 <div class="card-header">
-                    <h2 class="text-center"><b>CREATE BLOG</b> </h2>
+                    <h2 class="text-center"><b>UPDATE BLOG</b> </h2>
                 </div>
                 <div class="card-body">
                     <div class="row">
@@ -20,20 +20,23 @@
                             <select name="category" class="form-control">
                                 <option value="">Please Select</option>
                                 @foreach($categories as $category)
-                                    <option value="{{$category->name}}"{{ old("category") == $category->name ? "selected" : "" }}>{{$category->name}}</option>
+                                    <option value="{{$category->name}}" @if($category->name == $blog->category) selected @endif >{{$category->name}}</option>
                                 @endforeach
                             </select>
                             <small class="text-danger">@error ('category') {{ $message }} @enderror</small>
                         </div>
                         <div class="col-md-12 mt-3">
                             <label for="title">Title</label>
-                            <input type="text" class="form-control" name="title" value="{{old('title')}}">
+                            <input type="text" class="form-control" name="title" value="{{old('title' , $blog->title)}}">
                             <small class="text-danger">@error ('title') {{ $message }} @enderror</small>
                         </div>
                         <div class="col-md-12 mt-3">
-                            <label for="image">Thumbnail</label>
-                            <input type="file" class="form-control" name="image" value="{{old('image')}}">
-                            <small class="text-danger">@error ('image') {{ $message }} @enderror</small>
+                            <label for="image">Employee</label>
+                            <input type="file" class="form-control" name="image">
+                            <small class="text-danger">@error('image'){{$message}} @enderror</small>
+                            @if(!empty($blog->image))
+                                <img src="{{asset('upload/blog/'.$blog->image)}}" alt="" width="200px" class="img-thumbnail mt-3">
+                            @endif
                         </div>
 
                           
