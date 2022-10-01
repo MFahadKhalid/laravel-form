@@ -51,14 +51,13 @@ class BlogController extends Controller
     }
     public function update(Request $request, $id){
         $request->validate([ 
-        'category' => 'required,' .$id,
-        'title' => 'required|max:191:blogs,title,'.$id,
-        'image' => 'required,'.$id,
-        'short_discription' => 'required|max:191:blogs,short_discription,'.$id,
+        'category' => 'required|:blogs,category,' .$id,
+        'title' => 'required|max:191|unique:blogs,title,' .$id,
+        'short_discription' => 'required|max:8000|unique:blogs,short_discription,' .$id,
     ]);
-    $imageData = image::where('id',$id)->first();
-    if($request->file('blog')){
-        $image = $request->file('blog');
+    $imageData = Blog::where('id',$id)->first();
+    if($request->file('image')){
+        $image = $request->file('image');
         $imageName = 'blog' . '-' . time() . '.' . $image->getClientOriginalExtension();
         $image->move('upload/blog/', $imageName);
     }

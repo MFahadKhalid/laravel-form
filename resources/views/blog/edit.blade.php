@@ -6,8 +6,8 @@
     }
 </style>
     <div style="margin-left: 18%;" class="container mt-3">
-        <a href="{{ route('blog.index') }}" class="btn btn-info  float-right"><b>VIEW ALL</b></a>
-        <form class="mt-5" action="{{ route('blog.store') }}" method="POST" enctype="multipart/form-data" novalidate>
+        <a href="{{route('blog.update',$blog->id)}}" class="btn btn-info  float-right"><b>VIEW ALL</b></a>
+        <form class="mt-5" action="{{route('blog.update',$blog->id)}}" method="POST" enctype="multipart/form-data" novalidate>
             @csrf
                     <div class="mt-5 card">
                 <div class="card-header">
