@@ -20,10 +20,10 @@ class BlogController extends Controller
     }
     public function store(Request $request){
         $request->validate([
-            'category' => 'required',
-            'title' => 'required|max:191:blogs,title',                
+            'category_id' => 'required',
+            'title' => 'required',                
             'image' => 'required',
-            'short_discription' => 'required|max:8000:blogs,short_discription'                
+            'content' => 'required',                
         ]);
         if($request->file('image')){
             $image = $request->file('image');
@@ -31,17 +31,17 @@ class BlogController extends Controller
             $image->move('upload/blog/', $imageName);
         }
         $store = Blog::create([
-            'category' => $request->category,
+            'category_id' => $request->category_id,
             'title' => $request->title,
-            'author' => auth()->user()->name,
-            'short_discription' => $request->short_discription,
+            'author_id' => auth()->user()->id,
+            'content' => $request->content,
             'image' => $imageName,
         ]);
         if(!empty($store->id)){
-            return redirect()->route('blog.index')->with('Success' , 'Blog Add');
+            return redirect()->route('blog.index')->with('success','Blog Added');
         }
         else{
-            return redirect()->route('blog.create')->with('Error' , 'something went wrong');
+            return redirect()->route('blog.create')->with('error','Something Went Wrong');
         }
     }
     public function edit($id){
@@ -51,30 +51,33 @@ class BlogController extends Controller
     }
     public function update(Request $request, $id){
         $request->validate([ 
-        'category' => 'required|:blogs,category,' .$id,
-        'title' => 'required|max:191|unique:blogs,title,' .$id,
-        'short_discription' => 'required|max:8000|unique:blogs,short_discription,' .$id,
+        'category_id' => 'required',
+        'title' => 'required|max:191',
+        // 'image' => 'required',
+        'content' => 'required',
     ]);
     $imageData = Blog::where('id',$id)->first();
     if($request->file('image')){
         $image = $request->file('image');
-        $imageName = 'blog' . '-' . time() . '.' . $image->getClientOriginalExtension();
+        $imageName = 'blogqasim' . '-' . time() . '.' . $image->getClientOriginalExtension();
         $image->move('upload/blog/', $imageName);
     }
     else{
         $imageName = $imageData->blog;
     }
+    
+
     $update = blog::where('id',$id)->update([
-        'category' => $request->category,
+        'category_id' => $request->category_id,
         'title' => $request->title,
-        'author' => auth()->user()->id,
-        'short_discription' => $request->short_discription,
+        'author_id' => auth()->user()->id,
+        'content' => $request->content,
         'image' => $imageName,
     ]);
     if($update > 0){
         return redirect()->route('blog.index')->with('success','Blog update');
     }
-    return redirect()->route('blog.index')->with('error','something went wrong');  
+    return redirect()->route('blog.edit')->with('error','something went wrong');  
     }
     public function delete($id){
         $blogs = Blog::where('id',$id)->first();

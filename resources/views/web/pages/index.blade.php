@@ -47,7 +47,7 @@
                                 <ul>
                                     <li>
                                         <span class="post-cat">
-                                            <a href="#" tabindex="0">{{( $blog->category )}}</a>
+                                            <a href="#" tabindex="0">{{( $blog->category->name )}}</a>
                                         </span>
                                     </li>
                                     <li>
@@ -64,7 +64,7 @@
                                 <a href="">{{ $blog->title }}</a>
                             </h4>
                             <div class="desc-text mb-20">
-                                 {!! $blog->short_discription !!}
+                                 {!! $blog->content !!}
                             </div>
                             <a href="#" class="read-more">read more</a>
                         </div>

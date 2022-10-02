@@ -10,6 +10,9 @@ class Blog extends Model
     use HasFactory;
     protected $guarded = [];
     public function category(){
-        return $this->belongsTo(Blog::class);
+        return $this->belongsTo(Category::class);
+    }
+    public function author(){
+        return $this->belongsTo(Category::class);
     }
 }
