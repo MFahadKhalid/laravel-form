@@ -23,7 +23,8 @@ class BlogController extends Controller
             'category_id' => 'required',
             'title' => 'required',                
             'image' => 'required',
-            'content' => 'required',                
+            'short_description' => 'required|max:8000',              
+            'long_description' => 'required'              
         ]);
         if($request->file('image')){
             $image = $request->file('image');
@@ -34,7 +35,8 @@ class BlogController extends Controller
             'category_id' => $request->category_id,
             'title' => $request->title,
             'author_id' => auth()->user()->id,
-            'content' => $request->content,
+            'short_description' => $request->short_description,
+            'long_description' => $request->long_description,
             'image' => $imageName,
         ]);
         if(!empty($store->id)){
@@ -54,7 +56,8 @@ class BlogController extends Controller
         'category_id' => 'required',
         'title' => 'required|max:191',
         // 'image' => 'required',
-        'content' => 'required',
+        'short_description' => 'required',
+        'long_description' => 'required',
     ]);
     $imageData = Blog::where('id',$id)->first();
     if($request->file('image')){
@@ -63,7 +66,7 @@ class BlogController extends Controller
         $image->move('upload/blog/', $imageName);
     }
     else{
-        $imageName = $imageData->blog;
+        $imageName = $imageData->image;
     }
     
 
@@ -71,7 +74,8 @@ class BlogController extends Controller
         'category_id' => $request->category_id,
         'title' => $request->title,
         'author_id' => auth()->user()->id,
-        'content' => $request->content,
+        'short_description' => $request->short_description,
+        'long_description' => $request->long_description,
         'image' => $imageName,
     ]);
     if($update > 0){

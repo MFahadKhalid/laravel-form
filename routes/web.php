@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ReaderController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\AuthorEditController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/', [IndexController::class, 'index'])->name('index');
+Route::get('blog/{id}/details', [IndexController::class, 'details'])->name('web.pages.details');
 
 //category
 
@@ -36,9 +38,16 @@ Route::get('category/{id}/delete', [CategoryController::class, 'delete'])->name(
 
 Route::get('reader' , [ReaderController::class , 'index'])->name('reader.index');
 
+//Left Nav
+
 //Author
 
 Route::get('author' , [AuthorController::class , 'index'])->name('authors.index');
+
+//Author Edit
+Route::get('author/{id}/edit', [CategoryController::class, 'edit'])->name('authors_edit.edit');
+Route::post('author/{id}/update', [CategoryController::class, 'update'])->name('authors_edit.update');
+
 
 //Blog
 

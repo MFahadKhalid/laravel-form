@@ -12,10 +12,14 @@
             <a href="{{route('category.create')}}"><button class="btn btn-info float-right mb-5">Add More Data</button></a>
         </div>
         @if(Session::has('success'))
-        <div class="col-md-12">
-            <div class="alert alert-info">{{Session::get('success')}}</div>
-        </div>
-        @endif
+        <div class="col-md-12 alert alert-info alert-dismissible fade show mb-5 mt-5" role="alert">
+        {{Session::get('success')}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+@endif
+
     </div>
     <table class="shadow-lg table table-scripted table-hover bg-light">
         <thead>

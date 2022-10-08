@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('image')->nullable();
             $table->string('author_id');
-            $table->longtext('content');
+            $table->text('short_description');
             $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });

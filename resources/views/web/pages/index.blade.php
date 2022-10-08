@@ -5,7 +5,9 @@
     <div class="page-banner-area mt-60">
         <div class="container">
             <div class="row">
-                <div class="col-md-12 text-right">
+                <div class="col-md-12">
+                    <a href="{{route('home')}}">Blog</a>
+                    <div class="text-right">
                     @auth
                         Hello, {{auth()->user()->name}}&nbsp;&nbsp;|&nbsp;&nbsp;<a href="javascript:;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">LOGOUT</a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -16,6 +18,7 @@
                     @guest
                         <a href="{{route('login')}}">LOGIN</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="{{route('register')}}">REGISTER</a>&nbsp;&nbsp;
                     @endguest
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -37,9 +40,9 @@
                 <div class="col-xl-8 col-lg-8 col-md-12">
                     <div class="postbox mb-40">
                         @foreach($blogs as $blog)
-                        <div class="mt-5 postbox__thumb mb-25">
-                            <a href="{{url('details')}}">
-                                <img src="{{asset('upload/blog/'.$blog->image)}}" alt="d">
+                        <div class="postbox__thumb mb-25">
+                            <a href="{{ route('web.pages.details' , $blog->id) }}">
+                                <img src="{{asset('upload/blog/'.$blog->image)}}" alt="d" height="100%" width="100%">
                             </a>
                         </div>
                         <div class="postbox__text">
@@ -64,9 +67,11 @@
                                 <a href="">{{ $blog->title }}</a>
                             </h4>
                             <div class="desc-text mb-20">
-                                 {!! $blog->content !!}
+                                 {{ $blog->short_description }}
                             </div>
-                            <a href="#" class="read-more">read more</a>
+                            <div class="mb-5">
+                                <a href="{{ route('web.pages.details' , $blog->id) }}" class="read-more">read more</a>
+                            </div>
                         </div>
                     @endforeach
 
@@ -259,6 +264,6 @@
         <!-- trendy news end -->
     </section>
     <!-- news area end -->
-
+ 
 </main>
 @endsection
