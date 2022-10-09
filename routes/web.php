@@ -6,7 +6,8 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ReaderController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BlogController;
-use App\Http\Controllers\AuthorEditController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Nav\NavController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,11 +43,12 @@ Route::get('reader' , [ReaderController::class , 'index'])->name('reader.index')
 
 //Author
 
-Route::get('author' , [AuthorController::class , 'index'])->name('authors.index');
+Route::get('authors' , [AuthorController::class , 'author'])->name('authors.index');
+
 
 //Author Edit
-Route::get('author/{id}/edit', [CategoryController::class, 'edit'])->name('authors_edit.edit');
-Route::post('author/{id}/update', [CategoryController::class, 'update'])->name('authors_edit.update');
+Route::get('author/profile', [AuthorController::class,'profile'])->name('profile.edit');
+Route::post('author/profile-update', [AuthorController::class,'update'])->name('profile.update');
 
 
 //Blog
@@ -57,3 +59,6 @@ Route::post('blog/store' , [BlogController::class , 'store'])->name('blog.store'
 Route::get('blog/{id}/edit', [BlogController::class, 'edit'])->name('blog.edit');
 Route::post('blog/{id}/update', [BlogController::class, 'update'])->name('blog.update');
 Route::get('blog/{id}/delete', [BlogController::class, 'delete'])->name('blog.delete');
+
+//Nav
+Route::get('nav' , [NavController::class , 'nav'])->name('include.author_left_nav');

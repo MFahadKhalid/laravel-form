@@ -5,18 +5,21 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Blog;
 use App\Models\Category;
+use App\Models\User;
 
 class BlogController extends Controller
 {
     public function index(){
         $blogs = Blog::get();
+        $user = User::where('id',auth()->user()->id)->first();
         $categories = Category::get();
-        return view('blog.index' , compact('blogs','categories'));
+        return view('blog.index' , compact('blogs','categories','user'));
     }
     public function create(){
         $blogs = Blog::get();
+        $user = User::where('id',auth()->user()->id)->first();
         $categories = Category::get();
-        return view('blog.create' , compact('categories','blogs'));
+        return view('blog.create' , compact('categories','blogs','user'));
     }
     public function store(Request $request){
         $request->validate([
@@ -49,7 +52,8 @@ class BlogController extends Controller
     public function edit($id){
         $blog = Blog::where('id',$id)->first();
         $categories = Category::get();
-        return view('blog.edit',compact('blog','categories'));
+        $user = User::where('id',auth()->user()->id)->first();
+        return view('blog.edit',compact('blog','categories','user'));
     }
     public function update(Request $request, $id){
         $request->validate([ 
@@ -85,7 +89,7 @@ class BlogController extends Controller
     }
     public function delete($id){
         $blogs = Blog::where('id',$id)->first();
-        if(!empty($blogs)){
+         if(!empty($blogs)){
          $blogs->delete();
          return redirect()->route('blog.index')->with('success','Blog delete');
         }

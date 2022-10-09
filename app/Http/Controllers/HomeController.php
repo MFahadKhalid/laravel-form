@@ -33,8 +33,8 @@ class HomeController extends Controller
             return view('web.pages.index' , compact('blogs'));
         }
         elseif(auth()->user()->role_id == 3){
-            $user = User::where('id',$id)->first();
-            return view('author.dashboard' ,compact('user'));
+            $user = User::where('id',auth()->user()->id)->first();
+            return view('author.dashboard' , compact('user'));
         }
     }
 }
