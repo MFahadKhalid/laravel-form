@@ -10,7 +10,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-        <img src="{{asset('upload/thumbnail/'.$user->thumbnail)}}" alt="" class="" height="100%" width="100%">
+        <img style="height:100%; " src="{{asset('upload/thumbnail/'.$user->thumbnail)}}" alt="" class="img-rounded" height="100%" width="100%">
       </div>
         <div class="info">
           <a href="{{ route('profile.edit')}}" class="d-block">{{auth()->user()->name}}</a>
