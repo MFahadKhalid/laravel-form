@@ -67,7 +67,7 @@
                     <small class="text-danger">@error ('linkedin') {{ $message }} @enderror</small>
                 </div>
                     <div class="mt-3 col-md-12 mt-3">
-                        <button type="submit" class="btn btn-primary btn-block ">ADD NEW</button>
+                        <button type="submit" class="btn btn-primary btn-block ">Update Now</button>
                     </div>
                 </div>
             </form>
