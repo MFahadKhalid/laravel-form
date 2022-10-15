@@ -12,4 +12,8 @@ class Category extends Model
     public function reader(){
         return $this->belongsTo(User::class);
     }
+    public function categoryCount($id){
+        $blogs  = Blog::where('category_id',$id)->count();
+        return $blogs;
+    }
 }

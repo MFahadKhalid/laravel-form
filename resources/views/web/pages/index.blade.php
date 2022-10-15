@@ -1,4 +1,20 @@
 @extends('web.layout.scaffold')
+@push('styles')
+    <style>
+    .pagination {
+        display: block !important;
+        margin: 0 !important;
+        overflow: hidden !important;
+        border-radius: 0 !important;
+        padding-bottom: 3px !important;
+    }
+    .page-item{
+        display: inline-block;
+    margin-right: 2px;
+    margin-bottom: 10px;
+    }
+    </style>
+@endpush
 @section('content')
 <main>
     <!-- hero-area start -->
@@ -59,7 +75,7 @@
                                     </li>
                                     <li>
                                         <i class="far fa-comment"></i>
-                                        <span>(03)</span>
+                                        <span>(00)</span>
                                     </li>
                                 </ul>
                             </div>
@@ -76,7 +92,7 @@
                     @endforeach
 
 
-                        
+
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-4 col-md-12">
@@ -232,38 +248,14 @@
             </div>
 
             <div class="row mt-10">
-                <div class="col-xl-12">
-                    <div class="pagination">
-                        <ul>
-                            <li>
-                                <a href="{{url('details')}}">Prev</a>
-                            </li>
-                            <li class="active">
-                                <a href="{{url('details')}}">
-                                    <span>1</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{url('details')}}">
-                                    <span>2</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{url('details')}}">
-                                    <span>3</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{url('details')}}">Next</a>
-                            </li>
-                        </ul>
-                    </div>
+                <div class="col-md-12">
+                    {{ $blogs->links() }}
                 </div>
             </div>
         </div>
         <!-- trendy news end -->
     </section>
     <!-- news area end -->
- 
+
 </main>
 @endsection

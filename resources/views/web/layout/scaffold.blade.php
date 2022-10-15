@@ -12,6 +12,7 @@
         <!-- Place favicon.ico in the root directory -->
 
 		@include('web.partials.styles')
+        @stack('styles')
     </head>
     <body>
         <!--[if lte IE 9]>
