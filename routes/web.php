@@ -33,7 +33,7 @@ Route::get('author/{id}', [IndexController::class, 'authorWise'])->name('web.pag
 //category
 
 Route::get('category', [CategoryController::class, 'index'])->name('category.index');
-Route::get('category/create' , [CategoryController::class , 'create'])->name('category.create');
+Route::get('categories/create' , [CategoryController::class , 'create'])->name('category.create');
 Route::post('category/store' , [CategoryController::class , 'store'])->name('category.store');
 Route::get('category/{id}/edit', [CategoryController::class, 'edit'])->name('category.edit');
 Route::post('category/{id}/update', [CategoryController::class, 'update'])->name('category.update');
@@ -51,7 +51,7 @@ Route::get('authors' , [AuthorController::class , 'author'])->name('authors.inde
 
 
 //Author Edit
-Route::get('author/profile', [AuthorController::class,'profile'])->name('profile.edit');
+Route::get('authors/profile', [AuthorController::class,'profile'])->name('profile.edit');
 Route::post('author/profile-update', [AuthorController::class,'update'])->name('profile.update');
 
 

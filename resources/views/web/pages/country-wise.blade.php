@@ -54,7 +54,7 @@
                                 <div class="col-lg-4 col-md-4">
                                     <div class="postbox mb-30">
                                         <div class="postbox__thumb">
-                                            <a href="#">
+                                            <a href="{{ route('web.pages.details' , $item->id) }} ">
                                                 <img class="img-100" src="{{asset('upload/blog/'.$item->image)}}" alt="hero image">
                                             </a>
                                         </div>

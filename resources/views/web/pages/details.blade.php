@@ -105,9 +105,9 @@
                         <div class="author-meta  mt-60">
                             <div class="media flex-column flex-md-row">
                                 <div style="height:30%; width:30%;" class="media-left">
-
-                                <img src="{{asset('upload/thumbnail/'.$blog->author-> thumbnail)}}" alt="" class="">
-
+                                <a href="{{route('web.pages.authorWise',$blog->author_id)}}">
+                                    <img src="{{asset('upload/thumbnail/'.$blog->author-> thumbnail)}}" alt="" class="">
+                                </a>
                                 </div>
                                 <div class="media-body">
                                     <span class="media-heading">
@@ -142,7 +142,7 @@
                                     <div class="col-lg-4 col-md-4">
                                         <div class="postbox mb-30">
                                             <div class="postbox__thumb">
-                                                <a href="#">
+                                                <a href="{{ route('web.pages.details' , $item->id) }}">
                                                     <img class="img-100" src="{{asset('upload/blog/'.$item->image)}}" alt="hero image">
                                                 </a>
                                             </div>

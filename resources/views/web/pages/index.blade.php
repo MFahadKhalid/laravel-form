@@ -197,6 +197,14 @@
                         </div>
                     </div>
                     <div class="widget widget-border mb-40">
+                        <h3 class="widget-title">Categories</h3>
+                        <ul>
+                            @foreach($categories as $category)
+                                <li><a href="{{route('web.pages.categoryWise',$category->id)}}">{{$category->name}} <span>{{$category->categoryCount($category->id)}}</span></a></li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    <div class="widget widget-border mb-40">
                         <h3 class="widget-title">Subscribe our Newsletter!</h3>
                         <p>Subscribe to our email newsletter to receive useful articles and special offers.</p>
                         <form class="widget-subscribe" action="#">

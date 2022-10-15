@@ -12,7 +12,8 @@ class IndexController extends Controller
 {
     public function index(){
         $blogs = Blog::where('status', 1)->paginate(5);
-        return view('web.pages.index' , compact('blogs'));
+        $categories  = Category::where('status',1)->orderBy('name','ASC')->get();
+        return view('web.pages.index' , compact('blogs','categories'));
     }
     public function details($id){
         $blog = Blog::where('id',$id)->firstOrFail();
