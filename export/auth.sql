@@ -13,12 +13,12 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
--- Dumping database structure for adminlte
-DROP DATABASE IF EXISTS `adminlte`;
-CREATE DATABASE IF NOT EXISTS `adminlte` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `adminlte`;
+-- Dumping database structure for laravel-form
+DROP DATABASE IF EXISTS `laravel-form`;
+CREATE DATABASE IF NOT EXISTS `laravel-form` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `laravel-form`;
 
--- Dumping structure for table adminlte.auths
+-- Dumping structure for table laravel-form.auths
 DROP TABLE IF EXISTS `auths`;
 CREATE TABLE IF NOT EXISTS `auths` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `auths` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table adminlte.blogs
+-- Dumping structure for table laravel-form.blogs
 DROP TABLE IF EXISTS `blogs`;
 CREATE TABLE IF NOT EXISTS `blogs` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `blogs` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table adminlte.categories
+-- Dumping structure for table laravel-form.categories
 DROP TABLE IF EXISTS `categories`;
 CREATE TABLE IF NOT EXISTS `categories` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `categories` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table adminlte.failed_jobs
+-- Dumping structure for table laravel-form.failed_jobs
 DROP TABLE IF EXISTS `failed_jobs`;
 CREATE TABLE IF NOT EXISTS `failed_jobs` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS `failed_jobs` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table adminlte.migrations
+-- Dumping structure for table laravel-form.migrations
 DROP TABLE IF EXISTS `migrations`;
 CREATE TABLE IF NOT EXISTS `migrations` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -88,7 +88,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table adminlte.password_resets
+-- Dumping structure for table laravel-form.password_resets
 DROP TABLE IF EXISTS `password_resets`;
 CREATE TABLE IF NOT EXISTS `password_resets` (
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -99,7 +99,7 @@ CREATE TABLE IF NOT EXISTS `password_resets` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table adminlte.personal_access_tokens
+-- Dumping structure for table laravel-form.personal_access_tokens
 DROP TABLE IF EXISTS `personal_access_tokens`;
 CREATE TABLE IF NOT EXISTS `personal_access_tokens` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -119,7 +119,7 @@ CREATE TABLE IF NOT EXISTS `personal_access_tokens` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table adminlte.roles
+-- Dumping structure for table laravel-form.roles
 DROP TABLE IF EXISTS `roles`;
 CREATE TABLE IF NOT EXISTS `roles` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -131,7 +131,7 @@ CREATE TABLE IF NOT EXISTS `roles` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table adminlte.users
+-- Dumping structure for table laravel-form.users
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
