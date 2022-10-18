@@ -267,7 +267,7 @@
                         @forelse ($popularPosts as $item)
                             <div class="post__small mb-30">
                                 <div class="post__small-thumb f-left">
-                                    <a href="#">
+                                    <a href="{{ route('web.pages.details' , $item->id) }}">
                                         <img src="{{asset('upload/blog/'.$item->image)}}" alt="hero image" style="height:100px; width:100px;">
                                     </a>
                                 </div>

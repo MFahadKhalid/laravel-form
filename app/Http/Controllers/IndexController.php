@@ -11,9 +11,10 @@ use App\Models\User;
 class IndexController extends Controller
 {
     public function index(){
+        $popularPosts = Blog::orderBy('views','DESC')->take(4)->get();
         $blogs = Blog::where('status', 1)->paginate(5);
         $categories  = Category::where('status',1)->orderBy('name','ASC')->get();
-        return view('web.pages.index' , compact('blogs','categories'));
+        return view('web.pages.index' , compact('blogs','categories','popularPosts'));
     }
     public function details($id){
         $blog = Blog::where('id',$id)->firstOrFail();
