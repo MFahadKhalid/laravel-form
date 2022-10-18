@@ -129,7 +129,7 @@
                         <div class="post__small mb-30">
                             <div class="post__small-thumb f-left">
                                 <a href="{{url('details')}}">
-                                    <img src="{{asset('assets/img/trendy/xs/xs-2.jpg')}}" alt="hero image">
+                                    bbbubjhbbvnbxbhbjhbhvbvbhbvhebbhhh<img src="{{asset('assets/img/trendy/xs/xs-2.jpg')}}" alt="hero image">
                                 </a>
                             </div>
                             <div class="post__small-text fix pl-10">

@@ -15,4 +15,8 @@ class Blog extends Model
     public function author(){
         return $this->belongsTo(User::class);
     }
+    public function categoryCount($id){
+        $blogs  = Blog::where('category_id',$id)->count();
+        return $blogs;
+    }
 }

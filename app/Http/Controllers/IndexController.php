@@ -25,7 +25,7 @@ class IndexController extends Controller
         $blog = Category::where('id',$id)->firstOrFail();
         $blogs  = Blog::where('category_id',$id)->paginate(9);
         $categories  = Category::where('status',1)->orderBy('name','ASC')->get();
-        return view('web.pages.country-wise',compact('blogs','blog','categories'));
+        return view('web.pages.category-wise',compact('blogs','blog','categories'));
     }
     public function authorWise($id){
         $author = User::where('id',$id)->firstOrFail();
