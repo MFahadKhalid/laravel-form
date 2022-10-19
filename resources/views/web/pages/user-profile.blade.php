@@ -1,5 +1,6 @@
 @extends('web.layout.scaffold')
 @section('content')
+
 <main>
     <!-- page-title-area start -->
     <div class="page-title-area">
@@ -28,16 +29,24 @@
             <div class="row">
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
+                @if(Session::has('success'))
+        <div class="col-md-12 alert alert-info alert-dismissible fade show mb-5 mt-5" role="alert">
+        {{Session::get('success')}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+@endif
                     <div class="card">
                         <div class="card-header">
-                          Profile
+                          <h2 class="text-center text-primary">Profile Update</h2>
                         </div>
                         <div class="card-body">
                             <form action="{{route('web.profile.update')}}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
-                                    <div class="col-md-12">
-                                        <label for="">Name</label>
+                                    <div class="col-md-12 mt-3">
+                                        <label for="">User</label>
                                         <input type="file" name="thumbnail" id="" class="form-control">
                                     </div>
                                     @if(!empty(auth()->user()->thumbnail))
@@ -45,27 +54,27 @@
                                         <img src="{{asset('upload/profile/'.auth()->user()->thumbnail)}}" class="img-thumbnail" style="height:100px; width:100px; ">
                                     </small>
                                     @endif
-                                    <div class="col-md-12">
+                                    <div class="col-md-12 mt-3">
                                         <label for="">Name</label>
                                         <input type="text" class="form-control" required name="name" value="{{auth()->user()->name}}">
                                     </div>
-                                    <div class="col-md-12">
+                                    <div class="col-md-12 mt-3">
                                         <label for="">About</label>
                                         <textarea name="about" id="" cols="30" rows="10" class="form-control">{{auth()->user()->about}}</textarea>
                                     </div>
-                                    <div class="col-md-12">
+                                    <div class="col-md-12 mt-3">
                                         <label for="">Facebook</label>
                                         <input type="text" class="form-control" required name="facebook" value="{{auth()->user()->facebook}}">
                                     </div>
-                                    <div class="col-md-12">
+                                    <div class="col-md-12 mt-3">
                                         <label for="">Twitter</label>
                                         <input type="text" class="form-control" required name="twitter" value="{{auth()->user()->twitter}}">
                                     </div>
-                                    <div class="col-md-12">
+                                    <div class="col-md-12 mt-3">
                                         <label for="">Google</label>
                                         <input type="text" class="form-control" required name="google" value="{{auth()->user()->google}}">
                                     </div>
-                                    <div class="col-md-12">
+                                    <div class="col-md-12 mt-3">
                                         <label for="">Linkedin</label>
                                         <input type="text" class="form-control" required name="linkedin" value="{{auth()->user()->linkedin}}">
                                     </div>
