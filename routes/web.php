@@ -27,6 +27,8 @@ Route::get('/', [IndexController::class, 'index'])->name('index');
 Route::get('blog/{id}/details', [IndexController::class, 'details'])->name('web.pages.details');
 Route::get('category/{id}', [IndexController::class, 'categoryWise'])->name('web.pages.categoryWise');
 Route::get('author/{id}', [IndexController::class, 'authorWise'])->name('web.pages.authorWise');
+Route::get('profile', [ProfileController::class, 'edit'])->name('web.profile.edit');
+Route::post('profile/update', [ProfileController::class, 'update'])->name('web.profile.update');
 
 
 

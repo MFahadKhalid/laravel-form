@@ -24,10 +24,10 @@ class BlogController extends Controller
     public function store(Request $request){
         $request->validate([
             'category_id' => 'required',
-            'title' => 'required',                
+            'title' => 'required',
             'image' => 'required',
-            'short_description' => 'required|max:8000',              
-            'long_description' => 'required'              
+            'short_description' => 'required|max:8000',
+            'long_description' => 'required'
         ]);
         if($request->file('image')){
             $image = $request->file('image');
@@ -56,7 +56,7 @@ class BlogController extends Controller
         return view('blog.edit',compact('blog','categories','user'));
     }
     public function update(Request $request, $id){
-        $request->validate([ 
+        $request->validate([
         'category_id' => 'required',
         'title' => 'required|max:191',
         // 'image' => 'required',
@@ -72,7 +72,7 @@ class BlogController extends Controller
     else{
         $imageName = $imageData->image;
     }
-    
+
 
     $update = blog::where('id',$id)->update([
         'category_id' => $request->category_id,
@@ -85,7 +85,7 @@ class BlogController extends Controller
     if($update > 0){
         return redirect()->route('blog.index')->with('success','Blog update');
     }
-    return redirect()->route('blog.edit')->with('error','something went wrong');  
+    return redirect()->route('blog.edit')->with('error','something went wrong');
     }
     public function delete($id){
         $blogs = Blog::where('id',$id)->first();
