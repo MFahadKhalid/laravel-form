@@ -7,6 +7,7 @@ use App\Http\Controllers\ReaderController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\Nav\NavController;
 
 /*
@@ -29,7 +30,7 @@ Route::get('category/{id}', [IndexController::class, 'categoryWise'])->name('web
 Route::get('author/{id}', [IndexController::class, 'authorWise'])->name('web.pages.authorWise');
 Route::get('profile', [ProfileController::class, 'edit'])->name('web.profile.edit');
 Route::post('profile/update', [ProfileController::class, 'update'])->name('web.profile.update');
-
+Route::post('store-comment', [CommentController::class,'store'])->name('web.comment.store');
 
 
 //category
@@ -45,7 +46,6 @@ Route::get('category/{id}/delete', [CategoryController::class, 'delete'])->name(
 
 Route::get('reader' , [ReaderController::class , 'index'])->name('reader.index');
 
-//Left Nav
 
 //Author
 
