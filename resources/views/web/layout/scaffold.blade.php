@@ -9,6 +9,7 @@
 
         <link rel="manifest" href="site.webmanifest">
 		<link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+        
         <!-- Place favicon.ico in the root directory -->
 
 		@include('web.partials.styles')
@@ -28,5 +29,6 @@
 
         @include('web.partials.footer')
         @include('web.partials.scripts')
+        @stack('scripts')
     </body>
 </html>

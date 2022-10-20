@@ -204,7 +204,7 @@
 
                                             </li>
                                     @empty
-                                            No comment found
+                                           <i> No comment found</i>
                                     @endforelse
 
                                 </ul>
