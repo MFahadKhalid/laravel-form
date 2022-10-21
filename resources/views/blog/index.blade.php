@@ -29,7 +29,7 @@
                 <th>Long Description</th>
                 <th>Action</th>
             </tr>
-            @foreach($blogs as $blog)
+            @forelse($blogs as $blog)
             <tr>
                 <td>{{( $blog->id )}}</td>
                 <td>{{( $blog->author->name )}}</td>
@@ -44,7 +44,11 @@
                     <a class="text-danger" href="{{route('blog.delete', $blog->id)}}" style="text-decoration: none;"><img src="{{asset('assets/img/b_drop.png')}}" alt="b_drop"> Delete</a>
                 </td>
             </tr>
-            @endforeach
+            @empty
+            <tr>
+                <td colspan="7" class="text-center">No record found</td>
+            </tr>
+            @endforelse
         </table>
     </div>
 @endsection

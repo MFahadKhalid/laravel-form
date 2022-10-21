@@ -10,7 +10,7 @@ use App\Models\User;
 class BlogController extends Controller
 {
     public function index(){
-        $blogs = Blog::get();
+        $blogs = Blog::where('author_id',auth()->user()->id)->get();
         $user = User::where('id',auth()->user()->id)->first();
         $categories = Category::get();
         return view('blog.index' , compact('blogs','categories','user'));

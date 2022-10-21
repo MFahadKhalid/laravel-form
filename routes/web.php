@@ -1,14 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\IndexController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\ReaderController;
-use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BlogController;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\IndexController;
+use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\ReaderController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\Nav\NavController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,6 +53,7 @@ Route::get('reader' , [ReaderController::class , 'index'])->name('reader.index')
 Route::get('authors' , [AuthorController::class , 'author'])->name('authors.index');
 
 
+
 //Author Edit
 Route::get('authors/profile', [AuthorController::class,'profile'])->name('profile.edit');
 Route::post('author/profile-update', [AuthorController::class,'update'])->name('profile.update');
@@ -68,3 +70,9 @@ Route::get('blog/{id}/delete', [BlogController::class, 'delete'])->name('blog.de
 
 //Nav
 Route::get('nav' , [NavController::class , 'nav'])->name('include.author_left_nav');
+
+
+//Creat User
+Route::get('create-user', [UserController::class,'create'])->name('admin.users.create');
+Route::post('store-user', [UserController::class,'store'])->name('admin.users.store');
+
